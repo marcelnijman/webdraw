@@ -1,15 +1,15 @@
-//var express = require('express');
+var express = require('express');
 
-//var app = express();
-//var server = app.listen(8080);
+var app = express();
+var server = app.listen(8080);
 
-//console.log("My socket server is running");
+console.log("My socket server is running");
 
-//var socket = require('socket.io');
+var socket = require('socket.io');
 
-//var io = socket(server);
+var io = socket(server);
 
-//io.sockets.on('connection', newConnection);
+io.sockets.on('connection', newConnection);
 
 function newConnection(socket) {
 	console.log(socket.id);
@@ -23,6 +23,7 @@ function newConnection(socket) {
 	}
 }
 
+/*
 // HTTP Portion
 var http = require('http');
 // URL module
@@ -108,4 +109,5 @@ io.sockets.on('connection',
     });
   }
 );
+*/
 
