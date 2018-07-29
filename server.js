@@ -13,7 +13,7 @@ app.get('/', function(req, res) {
 });
 
 // server listens in on port
-app.listen(server_port, server_ip_address, function () {
+var server = app.listen(server_port, server_ip_address, function () {
 	 console.log( "Listening on " + server_ip_address + ", server_port " + server_port );
 });
 
