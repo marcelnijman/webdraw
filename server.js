@@ -1,7 +1,8 @@
 var express = require('express');
 
 var app = express();
-var server = app.listen(8080);
+
+var server = app.listen(3000);
 
 console.log("My socket server is running");
 
@@ -34,9 +35,9 @@ var path = require('path');
 var fs = require('fs');
 
 var server = http.createServer(handleRequest);
-server.listen(8080);
+server.listen(3000);
 
-console.log('Server started on port 8080');
+console.log('Server started on port 3000');
 
 function handleRequest(req, res) {
   // What did we request?

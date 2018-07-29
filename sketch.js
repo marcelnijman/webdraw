@@ -4,7 +4,7 @@ function setup() {
 	createCanvas(600, 400);
 	background(51);
 
-	socket = io.connect('http://webdraw-webdraw.a3c1.starter-us-west-1.openshiftapps.com:8080');
+	socket = io.connect('http://webdraw-webdraw.a3c1.starter-us-west-1.openshiftapps.com:3000');
 
 	socket.on('mouse', newDrawing);
 }
