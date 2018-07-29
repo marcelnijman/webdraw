@@ -19,6 +19,10 @@ var server = app.listen(server_port, server_ip_address, function () {
 });
 */
 
+app.get('/', function(req, res) {
+	res.sendFile(__dirname + '/index.html');
+});
+
 var server = app.listen(8080);
 
 console.log("My socket server is running");
@@ -26,8 +30,6 @@ console.log("My socket server is running");
 var socket = require('socket.io');
 
 var io = socket(server);
-
-console.log(io);
 
 io.sockets.on('connection', newConnection);
 

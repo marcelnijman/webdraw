@@ -5,8 +5,13 @@ function setup() {
 	background(51);
 
 	socket = io.connect('http://webdraw-webdraw.a3c1.starter-us-west-1.openshiftapps.com:8080');
+	window.setTimeout(partB, 3000);
 
 	socket.on('mouse', newDrawing);
+}
+
+function partB() {
+	console.log(socket);
 }
 
 function newDrawing(data) {
