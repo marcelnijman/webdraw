@@ -1,15 +1,15 @@
-var express = require('express');
+//var express = require('express');
 
-var app = express();
-var server = app.listen(3000);
+//var app = express();
+//var server = app.listen(3000);
 
-console.log("My socket server is running");
+//console.log("My socket server is running");
 
-var socket = require('socket.io');
+//var socket = require('socket.io');
 
-var io = socket(server);
+//var io = socket(server);
 
-io.sockets.on('connection', newConnection);
+//io.sockets.on('connection', newConnection);
 
 function newConnection(socket) {
 	console.log(socket.id);
@@ -21,5 +21,57 @@ function newConnection(socket) {
 		socket.broadcast.emit('mouse', data);
 		// io.sockets.emit('mouse', data);
 	}
+}
+
+// HTTP Portion
+var http = require('http');
+// URL module
+var url = require('url');
+var path = require('path');
+
+// Using the filesystem module
+var fs = require('fs');
+
+var server = http.createServer(handleRequest);
+server.listen(3000);
+
+console.log('Server started on port 3000');
+
+function handleRequest(req, res) {
+  // What did we request?
+  var pathname = req.url;
+
+  // If blank let's ask for index.html
+  if (pathname == '/') {
+    pathname = '/index.html';
+  }
+
+  // Ok what's our file extension
+  var ext = path.extname(pathname);
+
+  // Map extension to file type
+  var typeExt = {
+    '.html': 'text/html',
+    '.js':   'text/javascript',
+    '.css':  'text/css'
+  };
+
+  // What is it?  Default to plain text
+  var contentType = typeExt[ext] || 'text/plain';
+
+  // User file system module
+  fs.readFile(__dirname + pathname,
+    // Callback function for reading
+    function (err, data) {
+      // if there is an error
+      if (err) {
+        res.writeHead(500);
+        return res.end('Error loading ' + pathname);
+      }
+      // Otherwise, send the data, the contents of the file
+      res.writeHead(200,{ 'Content-Type': contentType });
+      res.end(data);
+    }
+  );
 }
 
