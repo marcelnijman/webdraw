@@ -20,7 +20,8 @@ var server = app.listen(server_port, server_ip_address, function () {
 */
 
 app.get('/', function(req, res) {
-	res.sendFile(__dirname + '/index.html');
+//	res.sendFile(__dirname + '/index.html');
+	handleRequest(req, res);
 });
 
 var server = app.listen(8080);
@@ -59,6 +60,7 @@ var server = http.createServer(handleRequest);
 server.listen(3000);
 
 console.log('Server started on port 8080');
+*/
 
 function handleRequest(req, res) {
   // What did we request?
@@ -99,6 +101,7 @@ function handleRequest(req, res) {
   );
 }
 
+/*
 // WebSocket Portion
 // WebSockets work with the HTTP server
 var io = require('socket.io').listen(server);
