@@ -64,7 +64,7 @@ console.log('Server started on port 8080');
 function handleRequest(req, res) {
   // What did we request?
   var pathname = req.url;
-  console.log(pathname);
+//  console.log(pathname);
 
   // If blank let's ask for index.html
   if (pathname == '/') {
@@ -116,7 +116,7 @@ io.sockets.on('connection',
     socket.on('mouse',
       function(data) {
         // Data comes in as whatever was sent, including objects
-        console.log("Received: 'mouse' " + data.x + " " + data.y);
+//        console.log("Received: 'mouse' " + data.x + " " + data.y);
       
         // Send it to all other clients
         socket.broadcast.emit('mouse', data);
@@ -128,7 +128,7 @@ io.sockets.on('connection',
     );
     
     socket.on('disconnect', function() {
-      console.log("Client has disconnected");
+      console.log("Client has disconnected:" + socket.id);
     });
   }
 );
