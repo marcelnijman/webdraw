@@ -35,11 +35,12 @@ var fs = require('fs');
 var server = http.createServer(handleRequest);
 server.listen(8080);
 
-console.log('Server started on port 3000');
+console.log('Server started on port 8080');
 
 function handleRequest(req, res) {
   // What did we request?
   var pathname = req.url;
+  console.log(pathname);
 
   // If blank let's ask for index.html
   if (pathname == '/') {
