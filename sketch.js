@@ -1,6 +1,10 @@
 var socket;
 
 function setup() {
+	document.ontouchmove = function(/** Event */ event) {
+		event.preventDefault();
+	}
+
 	createCanvas(600, 400);
 	background(51);
 
